@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
+<head>
+<link rel="icon" href="/static/hgicon.png" type="image/png" />
+<meta name="robots" content="index, nofollow" />
+<link rel="stylesheet" href="/static/style-paper.css" type="text/css" />
+<script type="text/javascript" src="/static/mercurial.js"></script>
+
+<title>version-control-tools: ce9d0ea7995e</title>
+</head>
+<body>
+<div class="container">
+<div class="menu">
+<div class="logo">
+<a href="https://mercurial-scm.org/">
+<img src="/static/hglogo.png" alt="mercurial" /></a>
+</div>
+<ul>
+ <li><a href="/shortlog/ce9d0ea7995e">log</a></li>
+ <li><a href="/graph/ce9d0ea7995e">graph</a></li>
+ <li><a href="/tags">tags</a></li>
+ <li><a href="/bookmarks">bookmarks</a></li>
+ <li><a href="/branches">branches</a></li>
+</ul>
+<ul>
+ <li class="active">changeset</li>
+ <li><a href="/raw-rev/ce9d0ea7995e">raw</a></li>
+ <li><a href="/file/ce9d0ea7995e">browse</a></li>
+</ul>
+<ul>
+ 
+</ul>
+<ul>
+ <li><a href="/help">help</a></li>
+</ul>
+</div>
+
+<div class="main">
+
+<h2 class="breadcrumb"><a href="/">Mercurial</a> </h2>
+<h3>
+ changeset 5378:<a href="/rev/ce9d0ea7995e">ce9d0ea7995e</a>
+ <span class="tag">tip</span> <span class="tag">@</span> 
+</h3>
+
+<form class="search" action="/log">
+
+<p><input name="rev" id="search1" type="text" size="30" /></p>
+<div id="hint">Find changesets by keywords (author, files, the commit message), revision
+number or hash, or <a href="/help/revsets">revset expression</a>.</div>
+</form>
+
+<div class="description">Bug 1368879 - Allow using a revset for the changeset to export, r=gps</div>
+
+<table id="changesetEntry">
+<tr>
+ <th class="author">author</th>
+ <td class="author">&#83;&#116;&#101;&#118;&#101;&#32;&#70;&#105;&#110;&#107;&#32;&#60;&#115;&#102;&#105;&#110;&#107;&#64;&#109;&#111;&#122;&#105;&#108;&#108;&#97;&#46;&#99;&#111;&#109;&#62;</td>
+</tr>
+<tr>
+ <th class="date">date</th>
+ <td class="date age">Tue, 06 Jun 2017 12:59:28 -0700</td>
+</tr>
+<tr>
+ <th class="author">parents</th>
+ <td class="author"><a href="/rev/60e61aba1415">60e61aba1415</a> </td>
+</tr>
+<tr>
+ <th class="author">children</th>
+ <td class="author"></td>
+</tr>
+<tr>
+ <th class="files">files</th>
+ <td class="files"><a href="/file/ce9d0ea7995e/hgext/bzexport/__init__.py">hgext/bzexport/__init__.py</a> </td>
+</tr>
+<tr>
+  <th class="diffstat">diffstat</th>
+  <td class="diffstat">
+     1 files changed, 20 insertions(+), 8 deletions(-)
+
+    <a id="diffstatexpand" href="javascript:toggleDiffstat()">[<tt>+</tt>]</a>
+    <div id="diffstatdetails" style="display:none;">
+      <a href="javascript:toggleDiffstat()">[<tt>-</tt>]</a>
+      <table class="diffstat-table stripes2">  <tr>
+    <td class="diffstat-file"><a href="#l1.1">hgext/bzexport/__init__.py</a></td>
+    <td class="diffstat-total" align="right">28</td>
+    <td class="diffstat-graph">
+      <span class="diffstat-add" style="width:71.4285714286%;">&nbsp;</span>
+      <span class="diffstat-remove" style="width:28.5714285714%;">&nbsp;</span>
+    </td>
+  </tr>
+</table>
+    </div>
+  </td>
+</tr>
+</table>
+
+<div class="overflow">
+<div class="sourcefirst linewraptoggle">line wrap: <a class="linewraplink" href="javascript:toggleLinewrap()">on</a></div>
+<div class="sourcefirst"> line diff</div>
+<div class="stripes2 diffblocks">
+<div class="bottomline inc-lineno"><pre class="sourcelines wrap">
+<span id="l1.1" class="minusline">--- a/hgext/bzexport/__init__.py	Tue Jun 06 12:58:09 2017 -0700</span><a href="#l1.1"></a>
+<span id="l1.2" class="plusline">+++ b/hgext/bzexport/__init__.py	Tue Jun 06 12:59:28 2017 -0700</span><a href="#l1.2"></a>
+<span id="l1.3" class="atline">@@ -52,7 +52,7 @@</span><a href="#l1.3"></a>
+<span id="l1.4"> from cStringIO import StringIO</span><a href="#l1.4"></a>
+<span id="l1.5"> </span><a href="#l1.5"></a>
+<span id="l1.6"> from mercurial.i18n import _</span><a href="#l1.6"></a>
+<span id="l1.7" class="minusline">-from mercurial import cmdutil, commands, context, node, patch, util</span><a href="#l1.7"></a>
+<span id="l1.8" class="plusline">+from mercurial import cmdutil, commands, context, encoding, error, node, patch, scmutil, util</span><a href="#l1.8"></a>
+<span id="l1.9"> from hgext import mq, histedit</span><a href="#l1.9"></a>
+<span id="l1.10"> </span><a href="#l1.10"></a>
+<span id="l1.11"> OUR_DIR = os.path.dirname(__file__)</span><a href="#l1.11"></a>
+<span id="l1.12" class="atline">@@ -458,13 +458,16 @@</span><a href="#l1.12"></a>
+<span id="l1.13">                 # unapplied patches will be found here.</span><a href="#l1.13"></a>
+<span id="l1.14">                 rev = args[0]</span><a href="#l1.14"></a>
+<span id="l1.15">                 ui.debug(&quot;interpreting '%s' as an (unapplied) mq patch&quot;)</span><a href="#l1.15"></a>
+<span id="l1.16" class="minusline">-            else:</span><a href="#l1.16"></a>
+<span id="l1.17" class="plusline">+            elif re.match(r'\w[\w\.\-]+$', args[0]):</span><a href="#l1.17"></a>
+<span id="l1.18">                 # Assume it's a bug alias. The REST API will fail with bad bug</span><a href="#l1.18"></a>
+<span id="l1.19">                 # numbers.</span><a href="#l1.19"></a>
+<span id="l1.20">                 bug = args[0]</span><a href="#l1.20"></a>
+<span id="l1.21">                 if ' ' in bug:</span><a href="#l1.21"></a>
+<span id="l1.22">                     raise util.Abort(_(&quot;Invalid arguments. Can only pass revision and/or bug number&quot;))</span><a href="#l1.22"></a>
+<span id="l1.23">                 ui.debug(&quot;interpreting '%s' as a bug alias. Fingers crossed.&quot;)</span><a href="#l1.23"></a>
+<span id="l1.24" class="plusline">+            else:</span><a href="#l1.24"></a>
+<span id="l1.25" class="plusline">+                # Assume a revset.</span><a href="#l1.25"></a>
+<span id="l1.26" class="plusline">+                rev = args[0]</span><a href="#l1.26"></a>
+<span id="l1.27"> </span><a href="#l1.27"></a>
+<span id="l1.28">         # With zero args we'll guess at both, and if we fail we'll</span><a href="#l1.28"></a>
+<span id="l1.29">         # fail later.</span><a href="#l1.29"></a>
+<span id="l1.30" class="atline">@@ -906,17 +909,26 @@</span><a href="#l1.30"></a>
+<span id="l1.31">     context = ui.config(&quot;bzexport&quot;, &quot;unified&quot;, ui.config(&quot;diff&quot;, &quot;unified&quot;, None))</span><a href="#l1.31"></a>
+<span id="l1.32">     if context:</span><a href="#l1.32"></a>
+<span id="l1.33">         diffopts.context = int(context)</span><a href="#l1.33"></a>
+<span id="l1.34" class="minusline">-    if rev in repo:</span><a href="#l1.34"></a>
+<span id="l1.35" class="minusline">-        description_from_patch = repo[rev].description().decode('utf-8')</span><a href="#l1.35"></a>
+<span id="l1.36" class="plusline">+    description_from_patch = None</span><a href="#l1.36"></a>
+<span id="l1.37" class="plusline">+    if hasattr(repo, 'mq'):</span><a href="#l1.37"></a>
+<span id="l1.38" class="plusline">+        q = repo.mq</span><a href="#l1.38"></a>
+<span id="l1.39" class="plusline">+        try:</span><a href="#l1.39"></a>
+<span id="l1.40" class="plusline">+            contents = q.opener(q.lookup(rev), &quot;r&quot;)</span><a href="#l1.40"></a>
+<span id="l1.41" class="plusline">+            description_from_patch = '\n'.join(mq.patchheader(q.join(rev), q.plainmode).message)</span><a href="#l1.41"></a>
+<span id="l1.42" class="plusline">+        except error.Abort:</span><a href="#l1.42"></a>
+<span id="l1.43" class="plusline">+            # mq failed to find a patch named rev. Fall through and do a normal</span><a href="#l1.43"></a>
+<span id="l1.44" class="plusline">+            # lookup instead.</span><a href="#l1.44"></a>
+<span id="l1.45" class="plusline">+            pass</span><a href="#l1.45"></a>
+<span id="l1.46" class="plusline">+</span><a href="#l1.46"></a>
+<span id="l1.47" class="plusline">+    if description_from_patch is None:</span><a href="#l1.47"></a>
+<span id="l1.48" class="plusline">+        ctx = scmutil.revsingle(repo, rev)</span><a href="#l1.48"></a>
+<span id="l1.49" class="plusline">+        rev = node.hex(ctx.node())</span><a href="#l1.49"></a>
+<span id="l1.50" class="plusline">+        description_from_patch = encoding.tolocal(ctx.description())</span><a href="#l1.50"></a>
+<span id="l1.51">         if hasattr(cmdutil, &quot;export&quot;):</span><a href="#l1.51"></a>
+<span id="l1.52">             cmdutil.export(repo, [rev], fp=contents, opts=diffopts)</span><a href="#l1.52"></a>
+<span id="l1.53">         else:</span><a href="#l1.53"></a>
+<span id="l1.54">             # Support older hg versions</span><a href="#l1.54"></a>
+<span id="l1.55">             patch.export(repo, [rev], fp=contents, opts=diffopts)</span><a href="#l1.55"></a>
+<span id="l1.56" class="minusline">-    else:</span><a href="#l1.56"></a>
+<span id="l1.57" class="minusline">-        q = repo.mq</span><a href="#l1.57"></a>
+<span id="l1.58" class="minusline">-        contents = q.opener(q.lookup(rev), &quot;r&quot;)</span><a href="#l1.58"></a>
+<span id="l1.59" class="minusline">-        description_from_patch = '\n'.join(mq.patchheader(q.join(rev), q.plainmode).message)</span><a href="#l1.59"></a>
+<span id="l1.60"> </span><a href="#l1.60"></a>
+<span id="l1.61">     # Just always use the rev name as the patch name. Doesn't matter much,</span><a href="#l1.61"></a>
+<span id="l1.62">     # unless you want to avoid obsoleting existing patches when uploading a</span><a href="#l1.62"></a></pre></div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+</body>
+</html>
+
+ñJÂ”ìN      Y9‚ªY9‚ª=ÿ…‰           :http://hgserv/rev/ce9d0ea7995e necko:classified 1 strongly-framed 0 request-method GET response-head HTTP/1.1 200 Script output follows
+Via: 1.1 tinyproxy (tinyproxy/1.8.4)
+Content-Type: text/html; charset=UTF-8
+Etag: W/"1496965524"
+Server: BaseHTTP/0.3 Python/2.7.13
+Date: Thu, 08 Jun 2017 23:50:19 GMT
+ original-response-headers Via: 1.1 tinyproxy (tinyproxy/1.8.4)
+Content-Type: text/html; charset=UTF-8
+Etag: W/"1496965524"
+Server: BaseHTTP/0.3 Python/2.7.13
+Date: Thu, 08 Jun 2017 23:50:19 GMT
+ charset UTF-8 uncompressed-len 0 predictor::resource-count 3 predictor::http://hgserv/static/style-paper.css 1,1,1496965819,4096 predictor::http://hgserv/static/mercurial.js 1,1,1496965819,4096 net-response-time-onstart 68 net-response-time-onstop 99 predictor::http://hgserv/static/hglogo.png 1,1,1496965819,4096   %c

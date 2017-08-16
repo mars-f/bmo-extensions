@@ -1,0 +1,482 @@
+{
+  "definitions": {
+    "Error": {
+      "properties": {
+        "detail": {
+          "type": "string"
+        }, 
+        "instance": {
+          "type": "string"
+        }, 
+        "status": {
+          "type": "integer"
+        }, 
+        "title": {
+          "type": "string"
+        }, 
+        "type": {
+          "type": "string"
+        }
+      }, 
+      "type": "object"
+    }, 
+    "Landing": {
+      "properties": {
+        "error": {
+          "description": "Error message if landing failed\n", 
+          "type": "string"
+        }, 
+        "id": {
+          "description": "The id of the Landing\n", 
+          "type": "integer"
+        }, 
+        "request_id": {
+          "description": "The id of the Request in Transplant service\n", 
+          "type": "integer"
+        }, 
+        "result": {
+          "description": "revision (sha) of push if landed == true\n", 
+          "type": "string"
+        }, 
+        "revision_id": {
+          "description": "The id of the Revision\n", 
+          "type": "integer"
+        }, 
+        "status": {
+          "default": "started", 
+          "description": "Status of the landing job in Transplant service\n", 
+          "type": "string"
+        }
+      }, 
+      "type": "object"
+    }, 
+    "Repo": {
+      "properties": {
+        "full_name": {
+          "description": "The full name of the repo.\n", 
+          "type": "string"
+        }, 
+        "phid": {
+          "description": "The phid of the repo.\n", 
+          "type": "string"
+        }, 
+        "short_name": {
+          "description": "A short representation of the repo name.\n", 
+          "type": "string"
+        }, 
+        "url": {
+          "description": "A url pointing to the repo on Phabricator.\n", 
+          "type": "string"
+        }
+      }, 
+      "type": "object"
+    }, 
+    "Revision": {
+      "properties": {
+        "author": {
+          "$ref": "#/definitions/User"
+        }, 
+        "bug_id": {
+          "description": "The ID of the Bugzilla bug this revision belongs to. Or null if\nit is not attached to a specific bug.\n", 
+          "type": "integer"
+        }, 
+        "date_created": {
+          "description": "The date that the revision was created as a unix timestamp.\n", 
+          "type": "integer"
+        }, 
+        "date_modified": {
+          "description": "The date that the revision was last modified as a unix timestamp.\n", 
+          "type": "integer"
+        }, 
+        "parent_revisions": {
+          "description": "A list of revisions which this revision depends on. I.e. this revision\ncannot land until its parents have landed. This list will almost\nalways contain just one revision. That revision may itself also have\nparent revisions. Traverse each parent revision until one without any\nparent is found to determine the full dependancy chain.\n", 
+          "items": {
+            "$ref": "#/definitions/Revision"
+          }, 
+          "type": "array"
+        }, 
+        "phid": {
+          "description": "The phid of the revision.\n", 
+          "type": "string"
+        }, 
+        "repo": {
+          "$ref": "#/definitions/Repo"
+        }, 
+        "revision_id": {
+          "description": "The id of the revision.\n", 
+          "type": "integer"
+        }, 
+        "status": {
+          "description": "An integer representing the review status of the revision.\n0 - Not reviewed.\n1 - Changes requested.\n2 - Approved.\nPhabricator may use other integers to represent other statuses, but,\nthese are not known at this time.\n", 
+          "type": "integer"
+        }, 
+        "status_name": {
+          "description": "A string representation of the status as determined by Phabricator.\n", 
+          "type": "string"
+        }, 
+        "summary": {
+          "description": "The summary provided on the revision.\n", 
+          "type": "string"
+        }, 
+        "test_plan": {
+          "description": "The test plan provided on the revision.\n", 
+          "type": "string"
+        }, 
+        "title": {
+          "description": "The title of the revision.\n", 
+          "type": "string"
+        }, 
+        "url": {
+          "description": "A url to the revision on Phabricator.\n", 
+          "type": "string"
+        }
+      }, 
+      "type": "object"
+    }, 
+    "User": {
+      "properties": {
+        "image_url": {
+          "description": "A url pointing to the user's Phabricator avatar.\n", 
+          "type": "string"
+        }, 
+        "phid": {
+          "description": "The phid of the user.\n", 
+          "type": "string"
+        }, 
+        "real_name": {
+          "description": "The user's real name as they set it on Phabricator.\n", 
+          "type": "string"
+        }, 
+        "url": {
+          "description": "A url pointing to the user on Phabricator.\n", 
+          "type": "string"
+        }, 
+        "username": {
+          "description": "The user's username on Phabricator.\n", 
+          "type": "string"
+        }
+      }, 
+      "type": "object"
+    }
+  }, 
+  "info": {
+    "description": "An API to get and land Phabricator revisions.", 
+    "title": "Lando API", 
+    "version": "0.1.0"
+  }, 
+  "paths": {
+    "/": {
+      "get": {
+        "responses": {
+          "302": {
+            "description": "Redirect to the UI", 
+            "headers": {
+              "Location": {
+                "description": "Where to redirect to", 
+                "type": "string"
+              }
+            }
+          }
+        }, 
+        "summary": "Redirect to the API UI and documentation"
+      }
+    }, 
+    "/landings": {
+      "get": {
+        "description": "Get list of jobs scheduled to land depending on the revision\nand/or status\n", 
+        "operationId": "landoapi.api.landings.get_list", 
+        "parameters": [
+          {
+            "in": "query", 
+            "name": "revision_id", 
+            "type": "string"
+          }, 
+          {
+            "in": "query", 
+            "name": "status", 
+            "type": "string"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "OK", 
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/Landing"
+              }, 
+              "type": "array"
+            }
+          }, 
+          "404": {
+            "description": "Revision does not exist", 
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Error"
+                }
+              ]
+            }
+          }, 
+          "default": {
+            "description": "Unexpected error", 
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Error"
+                }
+              ]
+            }
+          }
+        }
+      }, 
+      "post": {
+        "description": "Sends request to transplant service and responds just the status code\n", 
+        "operationId": "landoapi.api.landings.land", 
+        "parameters": [
+          {
+            "description": "The id of the revision to land. This can either be in form of\n'D12345' (as seen in Phabricator URLs), or just the id number.\n", 
+            "in": "body", 
+            "name": "data", 
+            "required": true, 
+            "schema": {
+              "properties": {
+                "revision_id": {
+                  "type": "string"
+                }
+              }, 
+              "required": [
+                "revision_id"
+              ], 
+              "type": "object"
+            }
+          }, 
+          {
+            "description": "A Phabricator Conduit API key to use to get the revision.\n", 
+            "in": "query", 
+            "name": "api_key", 
+            "required": false, 
+            "type": "string"
+          }
+        ], 
+        "responses": {
+          "202": {
+            "description": "OK", 
+            "schema": {
+              "properties": {
+                "id": {
+                  "description": "A newly created Landing id\n", 
+                  "type": "integer"
+                }
+              }, 
+              "type": "object"
+            }
+          }, 
+          "404": {
+            "description": "Revision does not exist", 
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Error"
+                }
+              ]
+            }
+          }, 
+          "default": {
+            "description": "Unexpected error", 
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Error"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }, 
+    "/landings/{landing_id}": {
+      "get": {
+        "description": "Request the status of the landing job.\n", 
+        "parameters": [
+          {
+            "description": "The id of the landing to return\n", 
+            "in": "path", 
+            "name": "landing_id", 
+            "required": true, 
+            "type": "string"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "OK", 
+            "schema": {
+              "$ref": "#/definitions/Landing"
+            }
+          }, 
+          "404": {
+            "description": "Landing does not exist", 
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Error"
+                }
+              ]
+            }
+          }, 
+          "default": {
+            "description": "Unexpected error", 
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Error"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }, 
+    "/landings/{landing_id}/update": {
+      "post": {
+        "description": "Sends request to transplant service and responds with just the\nstatus code\n", 
+        "operationId": "landoapi.api.landings.update", 
+        "parameters": [
+          {
+            "description": "Retrieve status of the landing job\n", 
+            "in": "body", 
+            "name": "data", 
+            "required": true, 
+            "schema": {
+              "properties": {
+                "destination": {
+                  "type": "string"
+                }, 
+                "error_msg": {
+                  "type": "string"
+                }, 
+                "landed": {
+                  "type": "boolean"
+                }, 
+                "patch": {
+                  "type": "string"
+                }, 
+                "request_id": {
+                  "type": "integer"
+                }, 
+                "result": {
+                  "type": "string"
+                }, 
+                "rev": {
+                  "type": "string"
+                }, 
+                "tree": {
+                  "type": "string"
+                }, 
+                "trysyntax": {
+                  "type": "string"
+                }
+              }, 
+              "required": [
+                "request_id"
+              ], 
+              "type": "object"
+            }
+          }, 
+          {
+            "description": "The id of the landing to return\n", 
+            "in": "path", 
+            "name": "landing_id", 
+            "required": true, 
+            "type": "string"
+          }
+        ], 
+        "responses": {
+          "202": {
+            "description": "OK"
+          }, 
+          "404": {
+            "description": "Landing does not exist", 
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Error"
+                }
+              ]
+            }
+          }, 
+          "default": {
+            "description": "Unexpected error", 
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Error"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }, 
+    "/revisions/{revision_id}": {
+      "get": {
+        "description": "Gets a revision's information as well as the information of\nall of its parent revisions.\n", 
+        "parameters": [
+          {
+            "description": "The id of the revision to get. This can either be in form of\n'D12345' (as seen in Phabricator URLs), or just the id number.\n", 
+            "in": "path", 
+            "name": "revision_id", 
+            "required": true, 
+            "type": "string"
+          }, 
+          {
+            "description": "A Phabricator Conduit API key to use to get the revision. If not\nprovided, then a default api key capable of getting public revisions\nonly will be used instead.\n", 
+            "in": "query", 
+            "name": "api_key", 
+            "required": false, 
+            "type": "string"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "OK", 
+            "schema": {
+              "$ref": "#/definitions/Revision"
+            }
+          }, 
+          "404": {
+            "description": "Revision does not exist", 
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Error"
+                }
+              ]
+            }
+          }, 
+          "default": {
+            "description": "Unexpected error", 
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Error"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }, 
+  "produces": [
+    "application/json"
+  ], 
+  "swagger": "2.0"
+}
+«ÐÙ1øå      Yo]{Yo]{=ýÛ™       #    :http://lando-api:9000/swagger.json necko:classified 1 strongly-framed 1 request-method GET response-head HTTP/1.0 200 OK
+Via: 1.1 tinyproxy (tinyproxy/1.8.4)
+Content-Length: 13543
+Content-Type: application/json
+ original-response-headers Via: 1.1 tinyproxy (tinyproxy/1.8.4)
+Content-Length: 13543
+Content-Type: application/json
+ net-response-time-onstart 53 net-response-time-onstop 53   4ç

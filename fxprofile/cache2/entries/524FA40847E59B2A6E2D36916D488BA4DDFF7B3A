@@ -1,0 +1,597 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
+<head>
+<link rel="icon" href="/static/hgicon.png" type="image/png" />
+<meta name="robots" content="index, nofollow" />
+<link rel="stylesheet" href="/static/style-paper.css" type="text/css" />
+<script type="text/javascript" src="/static/mercurial.js"></script>
+
+<title>version-control-tools: log</title>
+<link rel="alternate" type="application/atom+xml"
+   href="/atom-log" title="Atom feed for version-control-tools" />
+<link rel="alternate" type="application/rss+xml"
+   href="/rss-log" title="RSS feed for version-control-tools" />
+</head>
+<body>
+
+<div class="container">
+<div class="menu">
+<div class="logo">
+<a href="https://mercurial-scm.org/">
+<img src="/static/hglogo.png" alt="mercurial" /></a>
+</div>
+<ul>
+<li class="active">log</li>
+<li><a href="/graph/tip">graph</a></li>
+<li><a href="/tags">tags</a></li>
+<li><a href="/bookmarks">bookmarks</a></li>
+<li><a href="/branches">branches</a></li>
+</ul>
+<ul>
+<li><a href="/rev/tip">changeset</a></li>
+<li><a href="/file/tip">browse</a></li>
+</ul>
+<ul>
+
+</ul>
+<ul>
+ <li><a href="/help">help</a></li>
+</ul>
+<div class="atom-logo">
+<a href="/atom-log" title="subscribe to atom feed">
+<img class="atom-logo" src="/static/feed-icon-14x14.png" alt="atom feed" />
+</a>
+</div>
+</div>
+
+<div class="main">
+<h2 class="breadcrumb"><a href="/">Mercurial</a> </h2>
+<h3>log</h3>
+
+<form class="search" action="/log">
+
+<p><input name="rev" id="search1" type="text" size="30" value="" /></p>
+<div id="hint">Find changesets by keywords (author, files, the commit message), revision
+number or hash, or <a href="/help/revsets">revset expression</a>.</div>
+</form>
+
+<div class="navigate">
+<a href="/shortlog/tip?revcount=30">less</a>
+<a href="/shortlog/tip?revcount=120">more</a>
+| rev 5378: <a href="/shortlog/8277a178b3cb">(0)</a> <a href="/shortlog/be64a5962d6e">-3000</a> <a href="/shortlog/ba625d467433">-1000</a> <a href="/shortlog/11dff8ac246a">-300</a> <a href="/shortlog/bde86a91a01c">-100</a> <a href="/shortlog/1c73b7681928">-60</a> <a href="/shortlog/tip">tip</a> 
+</div>
+
+<table class="bigtable">
+<thead>
+ <tr>
+  <th class="age">age</th>
+  <th class="author">author</th>
+  <th class="description">description</th>
+ </tr>
+</thead>
+<tbody class="stripes2">
+ <tr>
+  <td class="age">Tue, 06 Jun 2017 12:59:28 -0700</td>
+  <td class="author">Steve Fink</td>
+  <td class="description">
+   <a href="/rev/ce9d0ea7995e">Bug 1368879 - Allow using a revset for the changeset to export, r=gps</a>
+   <span class="branchhead">default</span> <span class="tag">tip</span> <span class="tag">@</span> 
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 06 Jun 2017 12:58:09 -0700</td>
+  <td class="author">Steve Fink</td>
+  <td class="description">
+   <a href="/rev/60e61aba1415">Bug 1368821 - Allow bzexport to update patch descriptions in ancestors of the working directory, r=gps</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Wed, 24 May 2017 15:08:03 +0800</td>
+  <td class="author">byron jones</td>
+  <td class="description">
+   <a href="/rev/bbc9bc7d1b5e">hghooks: validate backouts on vendored paths (bug 1366667) r=gps</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Mon, 22 May 2017 15:31:41 +0800</td>
+  <td class="author">byron jones</td>
+  <td class="description">
+   <a href="/rev/b1b2649ec1e2">hghooks: add mozautomation to venv (bug 1366667) r=gps</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Wed, 24 May 2017 15:09:06 +0800</td>
+  <td class="author">byron jones</td>
+  <td class="description">
+   <a href="/rev/31ad63af29c1">hghooks: remove b2g users from commit-message hook (bug 1366667) r=gps</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Mon, 22 May 2017 14:49:15 +0800</td>
+  <td class="author">byron jones</td>
+  <td class="description">
+   <a href="/rev/ba5e85722a8f">hghooks: fix pep8/style issues in commit-message.py (bug 1366667) r=gps</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Mon, 05 Jun 2017 14:44:47 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/49d78d950bcf">docs: document vcssync repos and code locations</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Mon, 05 Jun 2017 14:40:06 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/032536dc839b">docs: document which repos and files are relevant for hacking on hg.mo</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 30 May 2017 12:07:42 -0700</td>
+  <td class="author">Steve Fink</td>
+  <td class="description">
+   <a href="/rev/f24a92c1e90f">Bug 1368791 - Only allow updating the commit message of the top applied mq patch, r=gps</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Thu, 01 Jun 2017 13:01:25 +0800</td>
+  <td class="author">byron jones</td>
+  <td class="description">
+   <a href="/rev/85ff7a7f0102">vcssync: silence clean_hg_repo() (bug 1369272) r=gps</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Wed, 24 May 2017 17:10:16 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/4da46067f88b">vcsreplicator: use remote value for incoming bookmarks (bug 1268963); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Wed, 24 May 2017 16:27:13 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/6039254c38d7">vcsreplicator: add test demonstrating bookmark divergence (bug 1268963); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 23 May 2017 16:07:32 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/6619b186870a">hgtemplates: port gitweb changes to gitweb_mozilla (bug 1360007); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Mon, 15 May 2017 18:33:41 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/988829390b5c">hgtemplates: synchronize templates with 4.2 release (bug 1360007); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Mon, 15 May 2017 18:30:48 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/281f0ba33a3f">ansible: upgrade Mercurial in hgweb virtualenvs to 4.2 (bug 1360007); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Mon, 15 May 2017 11:17:45 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/6c7786f0f639">testing: upgrade Mercurial in hgdev environment to 4.2 (bug 1360007); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 23 May 2017 17:08:19 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/2f0f321706c7">hgmo: refactor filelog entries modification (bug 1360007); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 23 May 2017 17:15:59 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/5f538a357d1c">hgmo: remove dummy changectx class (bug 1360007); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 23 May 2017 17:12:41 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/4283e6b79b2e">pushlog: add API to obtain push from node (bug 1360007); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 23 May 2017 15:20:21 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/135fc4946cd9">testing: install Mercurial 4.2 in standalone mode</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 23 May 2017 14:14:44 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/3051c20bc7b1">testing: don't run against virtualenv Mercurial when --all-versions used</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 23 May 2017 13:58:23 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/4cdd088dd97f">testing: install Mercurial 4.1 explicitly in standalone mode</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 23 May 2017 13:55:40 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/c5de70185ec1">testing: have Mercurial use the virtualenv's Python</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 23 May 2017 11:31:31 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/9e56770831d1">testing: install Mercurials in their own virtualenv</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 23 May 2017 14:04:18 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/d4d00fd7f152">testing: make --all-versions and --with-hg mutually exclusive</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 23 May 2017 11:04:22 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/17280488af9d">ansible/hg-web: remove errant colon from CSP (bug 1336590)</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Fri, 21 Apr 2017 12:57:27 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/5257beb77011">vcssync: move console scripts declaration to a list (bug 1366857); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 18 Apr 2017 17:25:51 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/d390d5141b02">vcssync: implement a context manager for monitoring an hg repo (bug 1366857); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 18 Apr 2017 17:03:33 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/71706e6151a4">vcssync: eliminate shamap_path variable (bug 1366857); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 18 Apr 2017 16:59:56 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/db3f7a7bad4a">vcssync: extract code for running `hg convert` to reusable function (bug 1366857); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 18 Apr 2017 16:48:58 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/c9bb5226382d">vcssync: extract code for testing for conversion presence (bug 1366857); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Mon, 17 Apr 2017 19:36:37 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/6e7a09ffdfe5">vcssync: extract code for updating refs into own function (bug 1366857); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Thu, 18 May 2017 15:46:57 +0800</td>
+  <td class="author">byron jones</td>
+  <td class="description">
+   <a href="/rev/caa7a2f87663">mozautomation: rework backout parser (bug 1365860) r=gps</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Thu, 18 May 2017 18:01:21 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/5ce8224bb603">ansible/hg-web: add &quot;frame-ancestors: https:&quot; to CSP (bug 1336590); r=fubar</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Wed, 17 May 2017 23:08:03 +0800</td>
+  <td class="author">byron jones</td>
+  <td class="description">
+   <a href="/rev/d3b828f0c012">autoland: prevent duplicate jobs (bug 1365487) r=gps</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Thu, 18 May 2017 15:03:18 +0900</td>
+  <td class="author">Mike Hommey</td>
+  <td class="description">
+   <a href="/rev/70fe96d2e44b">Bug 1365841 - Adapt cinnabar-debug-push script to upcoming changes to cinnabar, part 2. r=gps</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Wed, 17 May 2017 11:06:43 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/a0f0914fa6d0">ansible/hg-ssh: adjust file permissions in rsync</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Wed, 17 May 2017 10:58:01 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/04ec8a1657c6">pash: more tests with quotes</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Wed, 17 May 2017 10:53:44 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/17dde54b52fd">pash: remove unnecessary strip()</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 16 May 2017 16:38:57 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/8b32413e03a8">pash: rewrite hg command parsing (bug 1353499); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 16 May 2017 16:04:26 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/71bee3365963">pash: avoid re-assigning args variable (bug 1353499); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 16 May 2017 16:02:11 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/cde2b0f9a072">pash: use shlex.split() for obtaining command arguments (bug 1353499); r=glob</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 16 May 2017 14:09:56 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/803d80196098">docs: document how to use mozext to query pushlog data</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Mon, 15 May 2017 17:25:39 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/743e28b371d1">docker: convert pulse image to CentOS 7</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Mon, 15 May 2017 14:23:17 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/83c3a80a797c">docker: convert ldap image to CentOS 7</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Mon, 15 May 2017 11:37:32 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/63f19cfacc5c">docker: stop using `rsync -a` because owner/group updates are slow on overlayfs (bug 1349407)</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Mon, 15 May 2017 11:54:25 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/69221bbea902">docker: convert vct image to CentOS 7</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Mon, 15 May 2017 11:40:47 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/50c1ab1dea9c">docker: refresh base Docker image for CentOS 7</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Mon, 15 May 2017 14:50:31 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/846b584ad3e0">docker: save state after updating last images when building hgmo</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Fri, 12 May 2017 15:55:30 -0700</td>
+  <td class="author">Kai Engert</td>
+  <td class="description">
+   <a href="/rev/55a931c19a1d">hghooks: hook to verify changes to NSS and NSPR are approved (bug 1348852); r=gps</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Wed, 10 May 2017 17:06:45 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/887623043e78">ansible/hg-reviewboard: enable HSTS on reviewboard-hg (bug 1363917); r=fubar</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Thu, 11 May 2017 17:13:47 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/7cb50653f005">ansible: add role to send journald to CloudWatch (bug 1364231); r=dividehex</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Thu, 11 May 2017 17:05:20 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/f4fda6163c2b">ansible/common: adjust permissions on /var/log/journal; r=dividehex</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Thu, 11 May 2017 11:58:01 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/7337f40ceab7">ansible: create /var/log/journal (bug 1364168); r=fubar</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Wed, 10 May 2017 15:54:25 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/d7e04915f78d">docs: add article about vendoring considerations</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Wed, 10 May 2017 15:53:47 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/89d15dda8a89">docs: add blurb on vcs sync index page about the content therein</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Wed, 10 May 2017 21:32:22 +0800</td>
+  <td class="author">byron jones</td>
+  <td class="description">
+   <a href="/rev/38b1229808e1">vcssync: fix nits in exclude_dirs test (bug 1363635); r=gps</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Wed, 10 May 2017 13:27:08 +0800</td>
+  <td class="author">byron jones</td>
+  <td class="description">
+   <a href="/rev/4c0dafbad7cf">vcssync: pass exclude_dirs to linearize_git_repo (bug 1363635); r=gps</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 09 May 2017 20:21:05 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/8a7f62721041">docker: another fix for setting last-hgrb-id key</a>
+   
+  </td>
+ </tr>
+ <tr>
+  <td class="age">Tue, 09 May 2017 18:22:28 -0700</td>
+  <td class="author">Gregory Szorc</td>
+  <td class="description">
+   <a href="/rev/bb952e8846cc">docker: set last-hgrb-id key by default</a>
+   
+  </td>
+ </tr>
+
+</tbody>
+</table>
+
+<div class="navigate">
+<a href="/shortlog/tip?revcount=30">less</a>
+<a href="/shortlog/tip?revcount=120">more</a>
+| rev 5378: <a href="/shortlog/8277a178b3cb">(0)</a> <a href="/shortlog/be64a5962d6e">-3000</a> <a href="/shortlog/ba625d467433">-1000</a> <a href="/shortlog/11dff8ac246a">-300</a> <a href="/shortlog/bde86a91a01c">-100</a> <a href="/shortlog/1c73b7681928">-60</a> <a href="/shortlog/tip">tip</a> 
+</div>
+
+<script type="text/javascript">
+    ajaxScrollInit(
+            '/shortlog/%next%',
+            '1c73b76819281651b607c6c824a5aa73567cda6d', <!-- NEXTHASH
+            function (htmlText, previousVal) {
+                var m = htmlText.match(/'(\w+)', <!-- NEXTHASH/);
+                return m ? m[1] : null;
+            },
+            '.bigtable > tbody',
+            '<tr class="%class%">\
+            <td colspan="3" style="text-align: center;">%text%</td>\
+            </tr>'
+    );
+</script>
+
+</div>
+</div>
+
+
+
+</body>
+</html>
+
+∏Ó"∞           Y9‚Ø=ÿ…‹           :http://hgserv/ strongly-framed 0 request-method GET response-head HTTP/1.1 200 Script output follows
+Via: 1.1 tinyproxy (tinyproxy/1.8.4)
+Etag: W/"1496965524"
+Server: BaseHTTP/0.3 Python/2.7.13
+Date: Thu, 08 Jun 2017 23:50:07 GMT
+Content-Type: text/html; charset=UTF-8
+ original-response-headers Via: 1.1 tinyproxy (tinyproxy/1.8.4)
+Etag: W/"1496965524"
+Server: BaseHTTP/0.3 Python/2.7.13
+Date: Thu, 08 Jun 2017 23:50:07 GMT
+Content-Type: text/html; charset=UTF-8
+ charset UTF-8 uncompressed-len 0 predictor::resource-count 4 predictor::http://hgserv/static/style-paper.css 1,1,0,4096 predictor::http://hgserv/static/mercurial.js 1,1,0,4096 net-response-time-onstart 86 net-response-time-onstop 109 predictor::http://hgserv/static/hglogo.png 1,1,0,4096 predictor::http://hgserv/static/feed-icon-14x14.png 1,1,0,4096   G
